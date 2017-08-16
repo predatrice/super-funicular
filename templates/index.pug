@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta(name='viewport'
+        content='width=device-width,initial-scale=1.0,user-scalable=no')
+    title To do list
+    link(rel='stylesheet' href='style.css')
+  body
+    .appview
+      header
+        h1 To do List
+      main.container
+        ul#task-list
+          li(data-status='0') Buy Milk
+          li(data-status='1') Get newspaper
+      footer
+        form#task-form
+          input(type='text' 
+                placeholder='add task' 
+                id='task-input')
+          button(type='submit'
+                class='add-button') Add
+      script(src='main.js')
