@@ -88,7 +88,7 @@ window.addEventListener('load',function(){
     const logout = document.getElementById('logout');
     logout.addEventListener('click',logUserOut);
     
-    loadTasks();
+    //loadTasks();
     const TaskForm = document.getElementById('task-form');
     //add a listener for when form is submitted
     TaskForm.addEventListener('submit',onSubmit);
@@ -105,6 +105,8 @@ function logUserOut(){
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
       displayUserName(false);
+      //clear the task array
+      TaskArray = [];
     }).catch(function(error) {
       // An error happened.
     });
@@ -182,7 +184,13 @@ function removeDone(){
         if(item.status == 1){
             //splice removes item from array
             TaskArray.splice(i,1);
-            saveTasks();
+            let taskid = item.id;
+            let userid = app.userid;
+            let path = 'lists/' + userid + '/' + taskid;
+            firebase.database().ref(path).remove().then(function(response){
+                //response of database...
+            });
+            //saveTasks();
             renderTaskList();
         }
     }
@@ -197,7 +205,7 @@ function onSubmit(event){
     if(taskname != ''){
         let todo = new Task(taskname);
         TaskArray.push(todo);
-        saveTasks();
+        //saveTasks();
         event.target.reset();
         renderTaskList();
     }
@@ -280,7 +288,7 @@ function changeTaskStatus(event){
                 default:
                     break;
             }
-            saveTasks();
+            //saveTasks();
             renderTaskList();
         }
     }

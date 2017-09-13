@@ -81,7 +81,7 @@ header{
     #logout{
         color:white;
         text-decoration:none;
-        padding:15px 5px;
+        padding:10px 5px;
     }
     #remove{
         border:1px solid transparent;
@@ -133,5 +133,21 @@ footer{
         text-decoration:line-through;
         text-decoration-color:lighten(@main-color,30%);
         color:lighten(@main-color,35%);
+    }
+}
+@media only screen and (max-width:768px) {
+    .overlay{
+        .authform{
+            max-width:95%;
+        }
+    }
+    header{
+        h1{
+            font-size:1.2em;
+        }
+        #username{
+            font-size:1.2em;
+            margin-left:10px;
+        }
     }
 }
