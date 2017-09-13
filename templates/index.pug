@@ -5,16 +5,20 @@ html
         content='width=device-width,initial-scale=1.0,user-scalable=no')
     title To do list
     link(rel='stylesheet' href='style.css')
+    include firebase.pug
   body
     .appview
       header
+        h2#username
         h1 To do List
         button#remove 
           img(src='images/font-awesome_4-7-0_check_30_0_ecf0f1_none.png')
+        //log out button
+        a(href='#' id='logout') Log Out
       main.container
         ul#task-list
-          li(data-status='0') Buy Milk
-          li(data-status='1') Get newspaper
+          // li(data-status='0') Buy Milk
+          // li(data-status='1') Get newspaper
       footer
         form#task-form
           input(type='text' 
@@ -23,3 +27,5 @@ html
           button(type='submit'
                 class='add-button') Add
       script(src='main.js')
+      // include templates
+      include authforms.pug

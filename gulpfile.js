@@ -27,11 +27,12 @@ gulp.task('less', function(){
 	}))
 });
 
-gulp.task('js', function(){
-   return gulp.src('scripts/*js')
-   .pipe(minify())
-   .pipe(gulp.dest('build'))
-   .pipe(browsersync.reload({
+
+gulp.task('js', function(){ 
+    return gulp.src('scripts/*.js')
+    .pipe(minify())
+    .pipe(gulp.dest('build'))
+    .pipe(browsersync.reload({
 		  stream: true
 	}))
 });
@@ -42,7 +43,8 @@ gulp.task('browsersync', function() {
   });
 });
 
-gulp.task('watch', function(){
+
+gulp.task('watch', function() {
     runsequence('pug','less','js','browsersync',function(e){
 		//not yet anything
 	});
